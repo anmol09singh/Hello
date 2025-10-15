@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - Food Bridge</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-dark">
+        <div class="container">
+            <div class="logo">
+                <h1>🍽️ Food Bridge</h1>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="ngo-finder.html" class="nav-link">Find NGOs</a>
+                <a href="feed.html" class="nav-link">Feed</a>
+                <a href="chat.html" class="nav-link active">Messages</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+                <button class="btn-secondary" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid main-content">
+        <div class="chat-container">
+            <div class="conversations-sidebar">
+                <div class="conversations-header">
+                    <h3>Messages</h3>
+                    <button class="btn-primary btn-sm" onclick="showNewChatModal()">+ New Chat</button>
+                </div>
+                <div id="conversationsList" class="conversations-list"></div>
+            </div>
+
+            <div class="chat-area">
+                <div id="noChatSelected" class="no-chat-selected">
+                    <div class="empty-state">
+                        <div class="empty-icon">💬</div>
+                        <h3>Select a conversation</h3>
+                        <p>Choose from existing chats or start a new one</p>
+                    </div>
+                </div>
+
+                <div id="chatBox" class="chat-box" style="display: none;">
+                    <div class="chat-header">
+                        <div class="chat-user-info">
+                            <h4 id="chatUserName"></h4>
+                            <span id="chatUserType" class="user-type-badge"></span>
+                        </div>
+                    </div>
+
+                    <div id="messagesList" class="messages-list"></div>
+
+                    <div class="message-input-container">
+                        <form id="sendMessageForm">
+                            <input type="text" id="messageInput" placeholder="Type your message..." required>
+                            <button type="submit" class="btn-primary">Send</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Chat Modal -->
+    <div id="newChatModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('newChatModal')">&times;</span>
+            <h3>Start New Conversation</h3>
+            <div class="form-group">
+                <input type="text" id="userSearch" placeholder="Search users..." oninput="searchUsers()">
+            </div>
+            <div id="userSearchResults" class="user-search-results"></div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html>

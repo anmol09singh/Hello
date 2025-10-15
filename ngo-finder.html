@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find NGOs - Food Bridge</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <nav class="navbar navbar-dark">
+        <div class="container">
+            <div class="logo">
+                <h1>🍽️ Food Bridge</h1>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="ngo-finder.html" class="nav-link active">Find NGOs</a>
+                <a href="feed.html" class="nav-link">Feed</a>
+                <a href="chat.html" class="nav-link">Messages</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+                <button class="btn-secondary" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid main-content">
+        <div class="ngo-finder-container">
+            <div class="sidebar">
+                <div class="filter-section">
+                    <h3>Filter NGOs</h3>
+                    <div class="form-group">
+                        <label>Distance Range</label>
+                        <select id="distanceFilter" onchange="filterNGOs()">
+                            <option value="999999">All</option>
+                            <option value="5">Within 5 km</option>
+                            <option value="10">Within 10 km</option>
+                            <option value="25">Within 25 km</option>
+                            <option value="50">Within 50 km</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>View Mode</label>
+                        <div class="view-toggle">
+                            <button class="btn-view active" id="mapViewBtn" onclick="switchView('map')">🗺️ Map</button>
+                            <button class="btn-view" id="listViewBtn" onclick="switchView('list')">📋 List</button>
+                        </div>
+                    </div>
+                    <button class="btn-primary btn-block" onclick="getCurrentLocation()">📍 Use My Location</button>
+                </div>
+
+                <div class="ngo-list" id="ngoListSidebar">
+                    <h4>Nearby NGOs (<span id="ngoCount">0</span>)</h4>
+                    <div id="ngoCards"></div>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <div id="mapView" class="map-view">
+                    <div id="map"></div>
+                </div>
+                <div id="listView" class="list-view" style="display: none;">
+                    <div id="ngoListFull"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NGO Detail Modal -->
+    <div id="ngoModal" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close" onclick="closeModal('ngoModal')">&times;</span>
+            <div id="ngoDetails"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/ngo-finder.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Feed - Food Bridge</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-dark">
+        <div class="container">
+            <div class="logo">
+                <h1>🍽️ Food Bridge</h1>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="ngo-finder.html" class="nav-link">Find NGOs</a>
+                <a href="feed.html" class="nav-link active">Feed</a>
+                <a href="chat.html" class="nav-link">Messages</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+                <button class="btn-secondary" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <div class="feed-container">
+            <div class="create-post-section">
+                <h3>Share with Community</h3>
+                <form id="createPostForm">
+                    <div class="form-group">
+                        <select id="postType" required>
+                            <option value="">Select Post Type</option>
+                            <option value="donation">🍽️ Food Donation Available</option>
+                            <option value="fundraising">💰 Fundraising Campaign</option>
+                            <option value="story">📖 Success Story</option>
+                            <option value="general">📢 General Update</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="postTitle" placeholder="Title" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="postContent" placeholder="Share your story..." rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="file-upload-label">
+                            📷 Add Image (optional)
+                            <input type="file" id="postImage" accept="image/*" onchange="previewImage(event)">
+                        </label>
+                        <div id="imagePreview" style="display:none;">
+                            <img id="previewImg" style="max-width: 200px; margin-top: 10px; border-radius: 8px;">
+                            <button type="button" class="btn-remove" onclick="removeImage()">Remove</button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary">Post</button>
+                </form>
+            </div>
+
+            <div class="feed-filters">
+                <button class="filter-btn active" onclick="filterPosts('all')">All</button>
+                <button class="filter-btn" onclick="filterPosts('donation')">🍽️ Donations</button>
+                <button class="filter-btn" onclick="filterPosts('fundraising')">💰 Fundraising</button>
+                <button class="filter-btn" onclick="filterPosts('story')">📖 Stories</button>
+                <button class="filter-btn" onclick="filterPosts('general')">📢 General</button>
+            </div>
+
+            <div id="feedPosts" class="feed-posts"></div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/feed.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Bridge - Connect Donors with NGOs</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="landing-page">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1>🍽️ Food Bridge</h1>
+                </div>
+                <div class="nav-links">
+                    <button class="btn-secondary" onclick="showLogin()">Login</button>
+                    <button class="btn-primary" onclick="showRegister()">Register</button>
+                </div>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="container">
+                <h2>Prevent Food Waste, Feed the Hungry</h2>
+                <p>Connect food donors with NGOs to ensure no meal goes to waste</p>
+                <button class="btn-large" onclick="showRegister()">Get Started</button>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">👥</div>
+                        <h3>Join as Donor or NGO</h3>
+                        <p>Register your organization or become a food donor</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📍</div>
+                        <h3>Find Nearby NGOs</h3>
+                        <p>Locate and contact NGOs in your area instantly</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💬</div>
+                        <h3>Built-in Chat</h3>
+                        <p>Communicate directly through our messaging system</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Share Stories</h3>
+                        <p>Post donations, fundraisers, and success stories</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Welcome Back</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn-primary btn-block">Login</button>
+                <p class="text-center mt-2">Don't have an account? <a href="#" onclick="switchToRegister()">Register</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('registerModal')">&times;</span>
+            <h2>Create Account</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label>I am a:</label>
+                    <select id="userType" required onchange="toggleOrgField()">
+                        <option value="">Select Type</option>
+                        <option value="donor">Donor</option>
+                        <option value="ngo">NGO</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                <div class="form-group" id="orgNameGroup" style="display:none;">
+                    <label>Organization Name</label>
+                    <input type="text" id="orgName">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" id="address" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="registerPassword" required minlength="6">
+                </div>
+                <div class="form-group" id="descriptionGroup" style="display:none;">
+                    <label>About Your Organization</label>
+                    <textarea id="description" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn-primary btn-block">Register</button>
+                <p class="text-center mt-2">Already have an account? <a href="#" onclick="switchToLogin()">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
